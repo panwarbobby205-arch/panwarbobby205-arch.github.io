@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="reload-splash.js"></script>
+    <link rel="stylesheet" href="project.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+<div class="nav-bar">
+  <a href="profile.html" class="nav-item">PROFIL</a>
+  <a href="project.html" class="nav-item active">PROJECT</a>
+  <a href="contact.html" class="nav-item">CONTACT PERSON</a>
+</div>
+<div class="heading">
+  <h1>Recap Project 2026 </h1>
+</div>
+
+<div class="project-grid">
+  <div class="project-card tall" onclick="playVideo('VN20260907_181145.mp4')">
+    <img src="become1.png" alt="project1">
+  </div>
+  <div class="project-card tall" onclick="playVideo('WhatsApp Video 2026-09-11 at 9.48.33 PM.mp4')">
+    <img src="neta.png" alt="project2" style="width: 217px;height: 400px;">
+  </div>
+  <div class="project-card">
+    <img src="your-image3.jpg" alt="project3">
+  </div>
+  <div class="project-card tall">
+    <img src="your-image4.jpg" alt="project4">
+  </div>
+  <div class="project-card">
+    <img src="your-image5.jpg" alt="project5">
+  </div>
+  <div class="project-card">
+    <img src="your-image6.jpg" alt="project6">
+  </div>
+  <div class="project-card">
+    <img src="your-image7.jpg" alt="project7">
+  </div>
+</div>
+
+
+      <div class="div1"></div>
+  
+  <div class="div2"></div>
+  <div class="video-modal" id="videoModal">
+  <span class="close-btn" onclick="closeVideo()">&times;</span>
+  <video id="modalVideo" controls autoplay></video>
+</div>
+  <script src="project.js"></script>
+</body> 
+</html>

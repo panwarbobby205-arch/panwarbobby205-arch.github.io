@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogesh Singh | Portfolio</title>
+  <link rel="stylesheet" href="landing.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+  <div id="pageLoader" style="position:fixed; inset:0; background:#000; display:flex; align-items:center; justify-content:center; z-index:9999; transition: opacity 0.4s ease;">
+  <div style="width:40px; height:40px; border:3px solid #333; border-top-color:#fff; border-radius:50%; animation:spin 0.8s linear infinite;"></div>
+</div>
+
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+  <div class="landing">
+    <div class="photo-wrap">
+      <img src="panwar1.png" alt="Portfolio photo" onerror="this.style.display='none'">
+    </div>
+
+    <div class="landing-text">
+      <h1>PORTFOLIO <span class="year">2026</span></h1>
+      <p class="tag"><span class="checkbox"></span> CONTENT CREATOR</p>
+
+      <nav class="landing-menu">
+        <a href="profile.html" class="menu-item">START</a>
+        <a href="#" class="menu-item" id="exitBtn">EXIT</a>
+      </nav>
+    </div>
+  </div>
+
+  <script src="landing.js"></script>
+</body>
+</html>

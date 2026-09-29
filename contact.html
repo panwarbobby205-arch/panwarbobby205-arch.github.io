@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Bobby Panwar</title>
+    <script src="reload-splash.js"></script>
+    <link rel="stylesheet" href="contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      /* Fiverr logo (Font Awesome me Fiverr icon nahi hai, isliye wordmark) */
+      .fiverr-logo {
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: -0.3px;
+        color: #1dbf73;
+        line-height: 1;
+        font-style: normal;
+      }
+    </style>
+</head>
+<body>
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<div class="nav-bar">
+  <a href="profile.html" class="nav-item">PROFIL</a>
+  <a href="project.html" class="nav-item">PROJECT</a>
+  <a href="contact.html" class="nav-item active">CONTACT PERSON</a>
+</div>
+
+<div class="contact-me-section">
+  <div class="photo-block">
+    <div class="contact-photo">
+      <img src="panwar1.png" alt="Yogesh Singh" onerror="this.style.display='none'">
+    </div>
+    <p class="contact-name">Yogesh Singh<br><span class="contact-age">21</span></p>
+  </div>
+
+  <div class="contact-info">
+    <h2 class="contact-heading">CONTACT ME</h2>
+    <div id="socialList"></div>
+  </div>
+</div>
+
+<div class="div1"></div>
+<div class="div2"></div>
+
+<script>
+
+const LINKS = {
+  instagram: 'thee.ditorfx',
+  youtube:   '',            // apna channel handle
+  tiktok:    '',            // nahi hai to khali chhod do
+  fiverr:    'https://www.fiverr.com/s/d0DkBo0',   // poora Fiverr link
+  upwork:    'https://www.upwork.com/freelancers/~01ff7ff61ddc4d3eb3?mp_source=share',
+  whatsapp:  '7505728803',  // country code ke saath, + ke bina
+  telegram:  '',
+  linkedin:  'www.linkedin.com/in/yogesh-singh-a11615333',
+  x:         '',
+  facebook:  '',
+  behance:   '',
+  email:     'panwarbobby205@gmail.com'
+};
+
+// Har platform ka icon, link banane ka tarika, aur dikhne wala text
+const CONFIG = {
+  instagram: { icon: 'fa-brands fa-instagram',   url: v => 'https://www.instagram.com/' + v,     text: v => v },
+  youtube:   { icon: 'fa-brands fa-youtube',     url: v => 'https://www.youtube.com/@' + v,      text: v => '@' + v },
+  tiktok:    { icon: 'fa-brands fa-tiktok',      url: v => 'https://www.tiktok.com/@' + v,       text: v => '@' + v },
+  fiverr:    { icon: null,                       url: v => v,                                    text: () => 'Hire me on Fiverr' },
+  upwork:    { icon: 'fa-brands fa-upwork',      url: v => v,                                    text: () => 'Hire me on Upwork' },
+  whatsapp:  { icon: 'fa-brands fa-whatsapp',    url: v => 'https://wa.me/' + v.replace(/\D/g, ''), text: () => 'Chat on WhatsApp' },
+  telegram:  { icon: 'fa-brands fa-telegram',    url: v => 'https://t.me/' + v,                  text: v => '@' + v },
+  linkedin:  { icon: 'fa-brands fa-linkedin-in', url: v => 'https://' + v,                       text: () => 'LinkedIn' },
+  x:         { icon: 'fa-brands fa-x-twitter',   url: v => 'https://x.com/' + v,                 text: v => '@' + v },
+  facebook:  { icon: 'fa-brands fa-facebook-f',  url: v => 'https://www.facebook.com/' + v,      text: () => 'Facebook' },
+  behance:   { icon: 'fa-brands fa-behance',     url: v => 'https://www.behance.net/' + v,       text: () => 'Behance' },
+  email:     { icon: 'fa-solid fa-envelope',     url: v => 'mailto:' + v,                        text: v => v }
+};
+
+const list = document.getElementById('socialList');
+
+Object.keys(CONFIG).forEach(key => {
+  const value = (LINKS[key] || '').trim().replace(/^@/, '');
+  if (!value) return;   // khali hai to row banao hi mat
+
+  const a = document.createElement('a');
+  a.className = 'social-row';
+  a.href = CONFIG[key].url(value);
+  if (key !== 'email') {
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+  }
+
+  const iconWrap = document.createElement('span');
+  iconWrap.className = 'social-icon';
+
+  if (CONFIG[key].icon) {
+    const i = document.createElement('i');
+    i.className = CONFIG[key].icon;
+    i.style.fontSize = '20px';
+    iconWrap.appendChild(i);
+  } else {
+    // Fiverr wordmark
+    const f = document.createElement('span');
+    f.className = 'fiverr-logo';
+    f.textContent = 'fiverr.';
+    iconWrap.appendChild(f);
+  }
+
+  const handle = document.createElement('span');
+  handle.className = 'social-handle';
+  handle.textContent = CONFIG[key].text(value);
+
+  a.appendChild(iconWrap);
+  a.appendChild(handle);
+  list.appendChild(a);
+});
+
+// ---- Nav fade transition ----
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    const href = item.getAttribute('href');
+    if (href && !item.classList.contains('active')) {
+      e.preventDefault();
+      document.body.style.transition = 'opacity 0.25s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 250);
+    }
+  });
+});
+
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) document.body.style.opacity = '1';
+});
+
+// ---- Custom Cursor ----
+const dot = document.querySelector('.cursor-dot');
+const outline = document.querySelector('.cursor-outline');
+
+if (dot && outline) {
+  let mouseX = 0, mouseY = 0;
+  let outlineX = 0, outlineY = 0;
+  let started = false;
+
+  dot.style.opacity = 0;
+  outline.style.opacity = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!started) {
+      started = true;
+      outlineX = mouseX;
+      outlineY = mouseY;
+      dot.style.opacity = 1;
+      outline.style.opacity = 1;
+    }
+
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  function animateOutline() {
+    outlineX += (mouseX - outlineX) * 0.15;
+    outlineY += (mouseY - outlineY) * 0.15;
+    outline.style.left = outlineX + 'px';
+    outline.style.top = outlineY + 'px';
+    requestAnimationFrame(animateOutline);
+  }
+  animateOutline();
+
+  document.querySelectorAll('.nav-item, .social-row').forEach(item => {
+    item.addEventListener('mouseenter', () => outline.classList.add('hover'));
+    item.addEventListener('mouseleave', () => outline.classList.remove('hover'));
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+body{
+    background-color: black;
+    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.div1 {
+    height: 500px;
+    width: 500px;
+    border-radius: 250px;
+    background-color: #0c5d93;
+    filter: blur(80px);
+    position: absolute;
+    top: -150px;      /* negative karne se aur upar/corner ki taraf chala jayega */
+    left: -150px;     /* negative karne se aur left corner ki taraf */
+}
+.div2 {
+    height: 500px;
+    width: 500px;
+    border-radius: 250px;
+    background-color: #0c5d93;
+    filter: blur(80px);
+    position: absolute;
+    bottom: -150px;
+    right: -150px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 20px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-item {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #888;
+  cursor: pointer;
+  text-decoration: none; /* underline hatane ke liye */
+}
+
+.nav-item.active {
+  background-color: #a8d8f0;
+  color: #000;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+.heading {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.heading h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 42px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.heading span {
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #999;
+  margin-left: 12px;
+  vertical-align: middle;
+  border: 1px solid #555;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 180px;
+  gap: 10px;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.project-card {
+  overflow: hidden;
+  border-radius: 4px;
+  background: #111;
+}
+
+.project-card.tall {
+  grid-row: span 2;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card {
+  cursor: pointer;
+}
+
+.video-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+
+  /* smoothness ke liye */
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.video-modal.active {
+  opacity: 1;
+}
+
+.video-modal video {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 8px;
+  transform: scale(0.9);
+  transition: transform 0.35s ease;
+}
+
+.video-modal.active video {
+  transform: scale(1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.nav-item {
+  transition: all 0.25s ease;
+}
+
+.nav-item:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.nav-item.active {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+body {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.page-transition {
+  transition: opacity 0.4s ease;
+}
+body {
+  transition: opacity 0.3s ease;
+}
+* {
+  cursor: none;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease;
+}
+
+a:hover ~ .cursor-outline,
+.nav-item:hover ~ .cursor-outline {
+  width: 50px;
+  height: 50px;
+  border-color: #fff;
+}
