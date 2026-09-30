@@ -1,6 +1,10 @@
 function playVideo(src) {
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('modalVideo');
+  if (!modal || !video) {
+    console.error('videoModal ya modalVideo HTML mein nahi mila');
+    return;
+  }
   video.src = src;
   modal.style.display = 'flex';
 
@@ -8,11 +12,14 @@ function playVideo(src) {
   setTimeout(() => {
     modal.classList.add('active');
   }, 10);
+
+  video.play().catch(err => console.log('Play error:', err));
 }
 
 function closeVideo() {
   const modal = document.getElementById('videoModal');
   const video = document.getElementById('modalVideo');
+  if (!modal || !video) return;
 
   modal.classList.remove('active');
 
